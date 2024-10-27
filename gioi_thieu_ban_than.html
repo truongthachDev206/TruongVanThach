@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu bản thân</title>
+    <style>
+        /* Định dạng chung */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Container chính */
+        .container {
+            max-width: 600px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            text-align: center;
+            position: relative;
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+        }
+
+        /* Hiệu ứng vào trang */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hiệu ứng hover cho container */
+        .container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Ảnh đại diện */
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 10px auto;
+            border: 5px solid #ddd;
+            transition: transform 0.5s ease;
+        }
+
+        /* Hiệu ứng xoay khi hover vào ảnh đại diện */
+        .profile-pic:hover {
+            transform: rotate(360deg);
+        }
+
+        /* Tiêu đề */
+        h1 {
+            color: #333;
+            font-size: 2em;
+            margin-top: 10px;
+        }
+
+        /* Thông tin chung */
+        .info {
+            font-size: 1.2em;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        /* Cung hoàng đạo */
+        .zodiac {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .zodiac img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .zodiac img:hover {
+            transform: scale(1.2);
+        }
+
+        .zodiac p {
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        /* Nút bắt đầu */
+        .start-button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .start-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Nút bắt đầu hỏi câu hỏi -->
+        <button class="start-button" onclick="askQuestions()">Bấm vào đây để bắt đầu</button>
+    </div>
+
+    <script>
+        function askQuestions() {
+            const questions = [
+                "Muốn tìm hiểu thật không ?",
+                "Có yêu đâu mà tìm hiểu ?",
+                "Ê mà tới câu hỏi này đừng giận nha >< ",
+                "Thế làm bạn gái tớ nhá!!",
+                "Đồng ý không?"
+            ];
+
+            let responses = [];
+            for (let i = 0; i < questions.length; i++) {
+                const response = confirm(questions[i]);
+                responses.push(response ? "Có" : "Không");
+            }
+
+            // Hiển thị kết quả
+            alert("Kết quả của bạn:\n" + responses.join("\n"));
+
+            // Hiển thị thông tin bản thân sau khi hỏi xong
+            displayProfile();
+        }
+
+        function displayProfile() {
+            const container = document.querySelector('.container');
+            container.innerHTML = `
+                <!-- Ảnh đại diện -->
+                <img src="https://scontent.fhan4-5.fna.fbcdn.net/v/t39.30808-6/462361768_1600778120874586_3916857435768314190_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeFt4JbZ3ta_2TXYhdIKOue6c7tkNmVr1-Rzu2Q2ZWvX5B3tSQAU1Qi1hibzvcqKdijGNlfgspC6BKoRla_V0Btu&_nc_ohc=XYKRydX-ZR8Q7kNvgFt8goR&_nc_zt=23&_nc_ht=scontent.fhan4-5.fna&_nc_gid=AGAqQrsDxVbruDHZGi09IY-&oh=00_AYDidqUPT7PRo-SHln749Ly3VnNO8sqUV74TCLVz5BR2mA&oe=67235EC8" alt="Ảnh đại diện của bạn" class="profile-pic">
+                
+                <!-- Tên và thông tin cá nhân -->
+                <h1>Xin Chào! Tôi Là Trương Văn Thạch</h1>
+                <p class="info">Ngày sinh: 28/5/2006</p>
+                <p class="info">Sở thích: Tôi sinh ngày 28/5, thuộc cung Song Tử. Song Tử thường mang đến cảm giác tươi mới, hòa đồng và rất linh hoạt. Là người năng động, tôi thích trải nghiệm những điều mới mẻ và khám phá những vùng đất lạ. Tò mò về thế giới xung quanh, tôi luôn tìm kiếm những cơ hội để học hỏi và kết nối với người khác. Âm nhạc là niềm đam mê giúp tôi thư giãn và làm giàu cảm xúc, góp phần tạo thêm nguồn cảm hứng và năng lượng trong mỗi hành trình của tôi.</p>
+                
+                <!-- Cung hoàng đạo Song Tử -->
+                <div class="zodiac">
+                    <img src="https://media.istockphoto.com/id/856162904/vector/gemini-zodiac-sign-flat-astrology-vector-illustration-on-white-background.jpg?s=612x612&w=0&k=20&c=u5q-S0i5IqnL2nkO79uyG-d9FAtp9pnQHJTfU9lma7A=" alt="Cung hoàng đạo Song Tử">
+                    <p>Cung hoàng đạo: Song Tử (Gemini)</p>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
